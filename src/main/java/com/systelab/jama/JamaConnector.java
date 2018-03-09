@@ -28,10 +28,7 @@ public class JamaConnector {
         basic.setUsername(parameters.getUsername());
         basic.setPassword(parameters.getPassword());
 
-        Integer[] testGroupToIncude = new Integer[1];
-        testGroupToIncude[0] = parameters.getTestgroup();
-
-        createTestCycle(parameters.getProject(), parameters.getTestplan(), parameters.getCycleName(), new Date(), new Date(), testGroupToIncude);
+        createTestCycle(parameters.getProject(), parameters.getTestplan(), parameters.getCycleName(), new Date(), new Date(), Arrays.asList(parameters.getTestgroup()));
 
         setAllTestRunInTheLastCycleOfTheTestPlan(parameters.getTestplan(), parameters.getTestcasesPassed(), parameters.getTestcasesFailed());
     }
@@ -58,7 +55,7 @@ public class JamaConnector {
         return null;
     }
 
-    private void createTestCycle(Integer project, Integer testPlanId, String testCycleName, Date startDate, Date endDate, Integer[] testGroupToIncude) {
+    private void createTestCycle(Integer project, Integer testPlanId, String testCycleName, Date startDate, Date endDate, List<Integer> testGroupsToIncude) {
         TestplansApi api = new TestplansApi();
 
         RequestTestCycle requestTestCycle = new RequestTestCycle();
@@ -71,8 +68,7 @@ public class JamaConnector {
         requestTestCycle.setFields(fields);
 
         TestRunGenerationConfig config = new TestRunGenerationConfig();
-        for (int i = 0; i < testGroupToIncude.length; i++)
-            config.addTestGroupsToIncludeItem(testGroupToIncude[i]);
+        config.setTestGroupsToInclude(testGroupsToIncude);
 
         List<TestRunGenerationConfig.TestRunStatusesToIncludeEnum> statuses = new ArrayList<TestRunGenerationConfig.TestRunStatusesToIncludeEnum>();
         statuses.add(TestRunGenerationConfig.TestRunStatusesToIncludeEnum.BLOCKED);
