@@ -86,7 +86,7 @@ public class Parameters {
             System.out.println("Welcome to Jama Client.");
         System.out.println("");
         System.out.println("Main Parameters:");
-        System.out.println("    " + "-server for Jama Countour (mandatory)");
+        System.out.println("    " + "-server for Jama Contour (mandatory)");
         System.out.println("    " + "-username for the username (mandatory)");
         System.out.println("    " + "-password for the password (mandatory)");
         System.out.println("    " + "-project for the project id (mandatory)");
