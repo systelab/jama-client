@@ -1,4 +1,4 @@
-package com.systelab;
+package com.systelab.jama;
 
 
 public class MandatoryException extends Exception {

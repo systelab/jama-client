@@ -1,4 +1,4 @@
-package com.systelab;
+package com.systelab.jama;
 
 import java.util.*;
 

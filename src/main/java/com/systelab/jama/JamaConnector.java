@@ -1,4 +1,4 @@
-package com.systelab;
+package com.systelab.jama;
 
 import com.google.gson.internal.LinkedTreeMap;
 import io.swagger.client.ApiClient;
