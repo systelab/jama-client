@@ -12,28 +12,28 @@ import io.swagger.client.model.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class AutomaticTestResultsSetter {
+public class JamaConnector {
 
-    ConsoleHelp console;
+    Parameters parameters;
 
-    public AutomaticTestResultsSetter(String args[]) {
+    public JamaConnector(String args[]) {
         // Check https://blogs.oracle.com/gc/unable-to-find-valid-certification-path-to-requested-target
         // System.setProperty("javax.net.ssl.trustStore", "/Users/aserra/EclipseProjects/jama-client/jssecacerts");
 
-        console = new ConsoleHelp(args);
+        parameters = new Parameters(args);
 
         ApiClient client = Configuration.getDefaultApiClient();
-        client.setBasePath(console.getServer());
+        client.setBasePath(parameters.getServer());
         HttpBasicAuth basic = (HttpBasicAuth) client.getAuthentication("basic");
-        basic.setUsername(console.getUsername());
-        basic.setPassword(console.getPassword());
+        basic.setUsername(parameters.getUsername());
+        basic.setPassword(parameters.getPassword());
 
         Integer[] testGroupToIncude = new Integer[1];
-        testGroupToIncude[0] = console.getTestgroup();
+        testGroupToIncude[0] = parameters.getTestgroup();
 
-        createTestCycle(console.getProject(), console.getTestplan(), console.getCycleName(), new Date(), new Date(), testGroupToIncude);
+        createTestCycle(parameters.getProject(), parameters.getTestplan(), parameters.getCycleName(), new Date(), new Date(), testGroupToIncude);
 
-        setAllTestRunInTheLastCycleOfTheTestPlan(console.getTestplan(), console.getTestcasesPassed(), console.getTestcasesFailed());
+        setAllTestRunInTheLastCycleOfTheTestPlan(parameters.getTestplan(), parameters.getTestcasesPassed(), parameters.getTestcasesFailed());
     }
 
     private String getDateAsAFieldValue(Date date) {
@@ -142,6 +142,6 @@ public class AutomaticTestResultsSetter {
     }
 
     public static void main(String[] args) {
-        new AutomaticTestResultsSetter(args);
+        new JamaConnector(args);
     }
 }

@@ -2,7 +2,7 @@ package com.systelab;
 
 import java.util.*;
 
-public class ConsoleHelp {
+public class Parameters {
 
     private String server;
     private String username;
@@ -17,16 +17,16 @@ public class ConsoleHelp {
     private HashMap optsList = new HashMap<String, String>();
     private List<String> doubleOptsList = new ArrayList<String>();
 
-    public ConsoleHelp(String args[]) {
-        parseParameters(args);
+    public Parameters(String args[]) {
+        parse(args);
         if (isHelp()) {
             showHelp(true);
             System.exit(0);
         }
-        checkParameters();
+        check();
     }
 
-    private void parseParameters(String args[]) {
+    private void parse(String args[]) {
         for (int i = 0; i < args.length; i++) {
             switch (args[i].charAt(0)) {
                 case '-':
@@ -51,7 +51,7 @@ public class ConsoleHelp {
         }
     }
 
-    private void checkParameters() {
+    private void check() {
         try {
             server = checkParameter("server");
             username = checkParameter("username");
