@@ -7,6 +7,12 @@
     <groupId>com.systelab</groupId>
     <artifactId>jama-client</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
     <build>
         <plugins>
             <plugin>
@@ -22,6 +28,11 @@
 
 
     <dependencies>
+        <dependency>
+            <groupId>com.github.systelab</groupId>
+            <artifactId>jama-api</artifactId>
+            <version>v1.0.0</version>
+        </dependency>
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
