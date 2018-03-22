@@ -98,7 +98,7 @@ public class Parameters {
         System.out.println("    " + "-help to show this output.");
         System.out.println("");
         System.out.println("Example:");
-        System.out.println("    " + "jama-client -server https://jama.systelab.net/contour/rest/latest -username peter -password peter -project 30 -testplan 50965 -testgroup 676 -cycleName CycleX -testcasespassed TC_12,TC-34,TC-25");
+        System.out.println("    " + "jama-client -server https://jama.systelab.net/contour/rest/latest -username peter -password peter -project 30 -testplan 50965 -testgroup 676 -cycleName CycleX -testcasespassed TC_12,TC-34,TC-25 -testcasesfailed TC_1");
         System.out.println("");
     }
 
